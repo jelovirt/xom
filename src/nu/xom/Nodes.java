@@ -22,6 +22,7 @@
 package nu.xom;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -45,9 +46,9 @@ import java.util.List;
  * @version 1.1b4
  *
  */
-public final class Nodes {
+public final class Nodes implements Iterable<Node> {
     
-    private final List nodes;
+    private final List<Node> nodes;
     
     
     /**
@@ -56,7 +57,7 @@ public final class Nodes {
      * </p>
      */
     public Nodes() {
-        nodes = new ArrayList();
+        nodes = new ArrayList<>();
     }
     
     
@@ -74,7 +75,7 @@ public final class Nodes {
         if (node == null) {
             throw new NullPointerException("Nodes content must be non-null");
         }
-        nodes = new ArrayList(1);
+        nodes = new ArrayList<>(1);
         nodes.add(node);
         
     }
@@ -98,6 +99,11 @@ public final class Nodes {
     }
     
     
+    @Override
+    public Iterator<Node> iterator() {
+        return nodes.iterator();
+    }
+
     /**
      * <p>
      * Returns the index<sup>th</sup> node in the list.
@@ -113,7 +119,7 @@ public final class Nodes {
      *     negative or greater than or equal to the size of the list
      */
     public Node get(int index) {
-        return (Node) nodes.get(index);   
+        return nodes.get(index);
     }
 
     
@@ -131,7 +137,7 @@ public final class Nodes {
      *     negative or greater than or equal to the size of the list
      */
     public Node remove(int index) {
-        return (Node) nodes.remove(index);   
+        return nodes.remove(index);
     }
     
     

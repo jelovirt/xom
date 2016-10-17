@@ -22,6 +22,7 @@
 package nu.xom;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -38,10 +39,10 @@ import java.util.List;
  * 
  *
  */
-public final class Elements {
+public final class Elements implements Iterable<Element> {
 
     
-    private List elements = new ArrayList(1);
+    private List<Element> elements = new ArrayList<>(1);
     
     // non-public constructor to prevent instantiation
     Elements() {}
@@ -73,7 +74,7 @@ public final class Elements {
      *     or greater than or equal to the size of the list
      */
     public Element get(int index) {
-        return (Element) elements.get(index);   
+        return elements.get(index);
     }
     
     
@@ -82,4 +83,8 @@ public final class Elements {
         elements.add(element);
     }
 
+    @Override
+    public Iterator<Element> iterator() {
+        return elements.iterator();
+    }
 }
